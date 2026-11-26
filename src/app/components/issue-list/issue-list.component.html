@@ -26,7 +26,14 @@
         <td class="cell-bold">{{ row.equipmentName }}</td>
         <td>{{ row.reporterName }}</td>
         <td>{{ row.description }}</td>
-        <td class="cell-muted">{{ row.attachmentName }}</td>
+        <td class="cell-muted">
+          <div class="attachment-inline">
+            @if (row.photoSrc) {
+              <img [src]="row.photoSrc" [alt]="row.equipmentName" class="table-thumb" />
+            }
+            <span>{{ row.attachmentName }}</span>
+          </div>
+        </td>
         <td [class]="row.statusClass">{{ row.statusLabel }}</td>
         <td>
           <a [routerLink]="row.actionRoute" class="table-link">{{ row.actionLabel }}</a>

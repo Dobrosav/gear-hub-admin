@@ -10,6 +10,7 @@ export interface IssueRowView {
   reporterName: string;
   description: string;
   attachmentName: string;
+  photoSrc: string;
   status: IssueStatus;
   statusLabel: string;
   statusClass: string;
@@ -57,6 +58,7 @@ export class IssueListComponent implements OnInit {
         reporterName: reporter ? `${reporter.firstName} ${reporter.lastName}` : issue.reportedByUserId,
         description: issue.description,
         attachmentName,
+        photoSrc: this.dataService.resolvePhotoUrl(issue.photoUrl),
         status: issue.status,
         statusLabel,
         statusClass,

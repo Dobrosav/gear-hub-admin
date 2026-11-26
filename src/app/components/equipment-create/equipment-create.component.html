@@ -1,0 +1,120 @@
+<div class="page-header">
+  <div>
+    <h2 class="page-title">
+      {{ hasError ? 'Dodavanje nove opreme — greška pri čuvanju' : 'Dodavanje nove opreme u sistem' }}
+    </h2>
+  </div>
+  <a routerLink="/equipment" class="back-link">← Nazad na katalog</a>
+</div>
+
+@if (hasError) {
+  <div class="alert-error" role="alert">
+    {{ errorMessage }}
+  </div>
+}
+
+<form class="form-stack" (ngSubmit)="onSaveEquipment()">
+  <div class="form-row">
+    <label class="form-label" for="eq-name">Naziv opreme *</label>
+    <input
+      id="eq-name"
+      name="name"
+      type="text"
+      class="form-control"
+      [class.input-error]="hasError && !name.trim()"
+      [(ngModel)]="name"
+      placeholder="npr. Zoom H6 Handy Recorder"
+    />
+  </div>
+
+  <div class="form-row">
+    <label class="form-label" for="eq-type">Tip opreme *</label>
+    <select id="eq-type" name="type" class="form-control" [(ngModel)]="type">
+      @for (t of equipmentTypes; track t) {
+        <option [value]="t">{{ t }}</option>
+      }
+    </select>
+  </div>
+
+  <div class="form-row">
+    <label class="form-label" for="eq-rate">Cena po satu (RSD) *</label>
+    <input
+      id="eq-rate"
+      name="hourlyRate"
+      type="number"
+      class="form-control"
+      [class.input-error]="hasError && (hourlyRate === null || hourlyRate <= 0)"
+      [(ngModel)]="hourlyRate"
+      placeholder="250"
+    />
+  </div>
+
+  @if (!hasError) {
+    <div class="form-row">
+      <label class="form-label" for="eq-status">Početni status *</label>
+      <select id="eq-status" name="status" class="form-control" [(ngModel)]="status">
+        <option value="AVAILABLE">Dostupno</option>
+        <option value="MAINTENANCE">Na održavanju</option>
+        <option value="DISABLED">Privremeno isključeno</option>
+      </select>
+    </div>
+
+    <div class="form-row">
+      <label class="form-label" for="eq-desc">Opis opreme</label>
+      <input
+        id="eq-desc"
+        name="description"
+        type="text"
+        class="form-control"
+        [(ngModel)]="description"
+        placeholder="Kratak tehnički opis uređaja i dodatne opreme..."
+      />
+    </div>
+  }
+
+  <div class="form-row">
+    <span class="form-label">Fotografija *</span>
+    <div>
+      <label
+        class="form-control file-picker-box"
+        [class.input-error]="hasError && !selectedFileName"
+        for="eq-photo"
+      >
+        <input
+          id="eq-photo"
+          type="file"
+          accept="image/*"
+          class="file-input-hidden"
+          (change)="onFileSelected($event)"
+        />
+        @if (selectedFileName) {
+          <span>✓ Izabrana datoteka: {{ selectedFileName }}</span>
+        } @else {
+          <span class="file-placeholder">
+            {{ hasError ? 'Nije priložena fotografija (kliknite za izbor slike)' : 'Kliknite za izbor fotografije uređaja...' }}
+          </span>
+        }
+      </label>
+
+      @if (photoDataUrl) {
+        <img
+          [src]="photoDataUrl"
+          alt="Pregled izabrane fotografije"
+          class="equipment-form-preview"
+        />
+      }
+    </div>
+  </div>
+
+  <div class="button-group">
+    <button type="submit" class="btn btn-primary">
+      {{ hasError ? 'ISPRAVI PODATKE' : 'SAČUVAJ OPREMU' }}
+    </button>
+
+  
+
+    <button type="button" class="btn btn-outline" (click)="onCancel()">
+      Otkaži
+    </button>
+  </div>
+</form>

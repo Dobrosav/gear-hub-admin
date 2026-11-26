@@ -132,6 +132,23 @@ export class DataService {
     return this.getIssues().find((issue) => issue.id === id);
   }
 
+  resolvePhotoUrl(photoUrl: string | null | undefined): string {
+    const trimmed = photoUrl?.trim();
+    if (!trimmed) {
+      return '';
+    }
+    if (
+      trimmed.startsWith('data:') ||
+      trimmed.startsWith('http://') ||
+      trimmed.startsWith('https://') ||
+      trimmed.startsWith('blob:') ||
+      trimmed.startsWith('/')
+    ) {
+      return trimmed;
+    }
+    return `/${trimmed}`;
+  }
+
   // ---------- Metode za izmene i perzistenciju ----------
 
   addEquipment(newItem: NewEquipmentInput): Equipment {

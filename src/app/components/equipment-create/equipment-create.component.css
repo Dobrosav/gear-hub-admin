@@ -1,0 +1,17 @@
+.file-picker-box {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.file-input-hidden {
+  display: none;
+}
+
+.file-placeholder {
+  color: var(--etf-text-muted);
+}
+
+.form-control.input-error .file-placeholder {
+  color: var(--alert-error-text);
+}

@@ -379,12 +379,58 @@ a {
 
 .attachment-preview-img {
   display: block;
-  max-width: 320px;
-  max-height: 200px;
-  margin-top: 12px;
-  border-radius: 4px;
+  max-width: 420px;
+  max-height: 260px;
+  margin-top: 14px;
+  border-radius: 6px;
   border: 1px solid var(--etf-border);
   object-fit: cover;
+  background-color: #ffffff;
+}
+
+.table-thumb {
+  width: 56px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid var(--etf-border);
+  display: block;
+  background-color: #f8fafc;
+}
+
+.equipment-form-preview {
+  max-width: 260px;
+  max-height: 170px;
+  margin-top: 10px;
+  border-radius: 6px;
+  border: 1px solid var(--etf-border);
+  object-fit: cover;
+  display: block;
+  background-color: #ffffff;
+}
+
+.attachment-inline {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.file-picker-box {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.file-input-hidden {
+  display: none;
+}
+
+.file-placeholder {
+  color: var(--etf-text-muted);
+}
+
+.form-control.input-error .file-placeholder {
+  color: var(--alert-error-text);
 }
 
 /* ---------- Responzivnost ---------- */

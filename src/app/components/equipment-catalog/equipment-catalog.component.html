@@ -11,6 +11,7 @@
 <table class="data-table">
   <thead>
     <tr>
+      <th>Foto</th>
       <th>Šifra</th>
       <th>Naziv opreme</th>
       <th>Tip</th>
@@ -22,6 +23,11 @@
   <tbody>
     @for (item of equipmentList; track item.id) {
       <tr>
+        <td>
+          @if (getPhotoSrc(item.photoUrl)) {
+            <img [src]="getPhotoSrc(item.photoUrl)" [alt]="item.name" class="table-thumb" />
+          }
+        </td>
         <td class="cell-muted">{{ item.inventoryCode }}</td>
         <td class="cell-bold">{{ item.name }}</td>
         <td>{{ item.type }}</td>

@@ -19,6 +19,10 @@ export class EquipmentCatalogComponent implements OnInit {
     this.equipmentList = this.dataService.getEquipmentList();
   }
 
+  getPhotoSrc(photoUrl: string): string {
+    return this.dataService.resolvePhotoUrl(photoUrl);
+  }
+
   getStatusLabel(status: EquipmentStatus): string {
     switch (status) {
       case 'AVAILABLE':
