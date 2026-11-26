@@ -1,0 +1,53 @@
+.kpi-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 1px solid var(--etf-border);
+  border-radius: 5px;
+  background-color: #f8fafc;
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+
+.kpi-cell {
+  padding: 20px 16px;
+  text-align: center;
+  border-right: 1px solid var(--etf-border);
+}
+
+.kpi-cell:last-child {
+  border-right: none;
+}
+
+.kpi-value {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 6px;
+}
+
+.kpi-navy {
+  color: var(--etf-navy);
+}
+
+.kpi-amber {
+  color: var(--status-maintenance);
+}
+
+.kpi-red {
+  color: var(--status-danger);
+}
+
+.kpi-label {
+  font-size: 13.5px;
+  color: var(--etf-text-secondary);
+}
+
+@media (max-width: 720px) {
+  .kpi-strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .kpi-cell {
+    border-bottom: 1px solid var(--etf-border);
+  }
+}

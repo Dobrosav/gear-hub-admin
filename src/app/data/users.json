@@ -1,0 +1,72 @@
+[
+  {
+    "id": "usr-001",
+    "firstName": "Marija",
+    "lastName": "Punt",
+    "phone": "+381 11 3218 392",
+    "email": "mpunt@etf.bg.ac.rs",
+    "username": "admin",
+    "password": "Admin123!",
+    "role": "ADMIN"
+  },
+  {
+    "id": "usr-002",
+    "firstName": "Jelica",
+    "lastName": "Cincović",
+    "phone": "+381 11 3218 395",
+    "email": "jcincovic@etf.bg.ac.rs",
+    "username": "admin_jelica",
+    "password": "Admin123!",
+    "role": "ADMIN"
+  },
+  {
+    "id": "usr-003",
+    "firstName": "Marko",
+    "lastName": "Marković",
+    "phone": "+381 64 123 4567",
+    "email": "mm20260012@student.etf.bg.ac.rs",
+    "username": "marko.m",
+    "password": "User123!",
+    "role": "USER"
+  },
+  {
+    "id": "usr-004",
+    "firstName": "Jovan",
+    "lastName": "Jovanović",
+    "phone": "+381 63 234 5678",
+    "email": "jj20260045@student.etf.bg.ac.rs",
+    "username": "jovan.j",
+    "password": "User123!",
+    "role": "USER"
+  },
+  {
+    "id": "usr-005",
+    "firstName": "Ana",
+    "lastName": "Ilić",
+    "phone": "+381 65 345 6789",
+    "email": "ai20260088@student.etf.bg.ac.rs",
+    "username": "ana.i",
+    "password": "User123!",
+    "role": "USER"
+  },
+  {
+    "id": "usr-006",
+    "firstName": "Petar",
+    "lastName": "Petrović",
+    "phone": "+381 60 456 7890",
+    "email": "pp20260103@student.etf.bg.ac.rs",
+    "username": "petar.p",
+    "password": "User123!",
+    "role": "USER"
+  },
+  {
+    "id": "usr-007",
+    "firstName": "Milica",
+    "lastName": "Nikolić",
+    "phone": "+381 62 567 8901",
+    "email": "mn20260119@student.etf.bg.ac.rs",
+    "username": "milica.n",
+    "password": "User123!",
+    "role": "USER"
+  }
+]

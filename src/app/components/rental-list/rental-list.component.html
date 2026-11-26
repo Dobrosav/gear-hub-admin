@@ -1,0 +1,42 @@
+<div class="page-header">
+  <div>
+    <h2 class="page-title">Sva iznajmljivanja u sistemu</h2>
+    <p class="page-subtitle">
+      Uvid u korisnike, početak i završetak korišćenja, konačan obračun i fotografije
+    </p>
+  </div>
+  <a routerLink="/calendar" class="btn btn-outline">Otvori kalendar</a>
+</div>
+
+<table class="data-table">
+  <thead>
+    <tr>
+      <th>Korisnik</th>
+      <th>Oprema</th>
+      <th>Početak</th>
+      <th>Završetak</th>
+      <th>Konačna cena</th>
+      <th>Status</th>
+      <th>Foto pri vraćanju</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (row of rows; track row.id) {
+      <tr>
+        <td>{{ row.userName }}</td>
+        <td class="cell-bold">{{ row.equipmentName }}</td>
+        <td>{{ row.startText }}</td>
+        <td>{{ row.endText }}</td>
+        <td class="cell-bold">{{ row.priceText }}</td>
+        <td [class]="row.statusClass">{{ row.statusLabel }}</td>
+        <td>
+          @if (row.actionRoute) {
+            <a [routerLink]="row.actionRoute" class="table-link">{{ row.actionLabel }}</a>
+          } @else {
+            <span class="cell-muted">{{ row.actionLabel }}</span>
+          }
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>

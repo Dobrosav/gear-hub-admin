@@ -1,0 +1,37 @@
+<div class="page-header">
+  <div>
+    <h2 class="page-title">Prijavljeni problemi i kvarovi</h2>
+    <p class="page-subtitle">
+      Pregled dostavljenih opisa i fotografija radi donošenja odluke o održavanju
+    </p>
+  </div>
+</div>
+
+<table class="data-table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Oprema</th>
+      <th>Prijavio</th>
+      <th>Opis problema</th>
+      <th>Prilog</th>
+      <th>Status</th>
+      <th>Akcija</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (row of rows; track row.id) {
+      <tr>
+        <td class="cell-muted">{{ row.displayId }}</td>
+        <td class="cell-bold">{{ row.equipmentName }}</td>
+        <td>{{ row.reporterName }}</td>
+        <td>{{ row.description }}</td>
+        <td class="cell-muted">{{ row.attachmentName }}</td>
+        <td [class]="row.statusClass">{{ row.statusLabel }}</td>
+        <td>
+          <a [routerLink]="row.actionRoute" class="table-link">{{ row.actionLabel }}</a>
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>

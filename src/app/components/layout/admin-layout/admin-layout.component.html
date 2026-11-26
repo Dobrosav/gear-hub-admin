@@ -1,0 +1,75 @@
+<div class="admin-shell">
+  <header class="etf-topbar">
+    <div>
+      <h1 class="etf-topbar-title">ETF OPREMA — Administracija</h1>
+    </div>
+    <div class="etf-topbar-right">
+      <span>Administrator ({{ currentAdminUsername }})</span>
+      <span class="topbar-sep">•</span>
+      <a class="etf-topbar-link" routerLink="/profile">Moj profil</a>
+    </div>
+  </header>
+
+  <div class="admin-body">
+    <aside class="admin-sidebar" aria-label="Administratorska navigacija">
+      <nav class="sidebar-nav">
+        <a
+          class="sidebar-link"
+          routerLink="/dashboard"
+          routerLinkActive="active"
+        >
+          Komandna tabla
+        </a>
+        <a
+          class="sidebar-link"
+          routerLink="/equipment"
+          routerLinkActive="active"
+        >
+          Katalog opreme
+        </a>
+        <a
+          class="sidebar-link"
+          routerLink="/rentals"
+          routerLinkActive="active"
+        >
+          Sva iznajmljivanja
+        </a>
+        <a
+          class="sidebar-link"
+          routerLink="/calendar"
+          routerLinkActive="active"
+        >
+          Kalendar zauzetosti
+        </a>
+        <a
+          class="sidebar-link"
+          routerLink="/issues"
+          routerLinkActive="active"
+        >
+          Prijavljeni problemi ({{ openIssuesCount }})
+        </a>
+
+        <hr class="sidebar-divider" />
+
+        <a
+          class="sidebar-link"
+          routerLink="/profile"
+          routerLinkActive="active"
+        >
+          Moj profil
+        </a>
+        <button
+          type="button"
+          class="sidebar-link sidebar-logout-btn"
+          (click)="onLogout()"
+        >
+          Odjava
+        </button>
+      </nav>
+    </aside>
+
+    <main class="admin-content">
+      <router-outlet />
+    </main>
+  </div>
+</div>

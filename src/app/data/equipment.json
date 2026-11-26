@@ -1,0 +1,98 @@
+[
+  {
+    "id": "eq-001",
+    "inventoryCode": "CAM-001",
+    "name": "Sony Alpha 7 IV",
+    "type": "Kamera",
+    "description": "Full-frame mirrorless kamera 33MP sa 28-70mm objektivom, pogodna za snimanje predavanja i 4K video projekata.",
+    "hourlyRate": 450,
+    "currency": "RSD",
+    "status": "RENTED",
+    "photoUrl": "assets/images/equipment/sony-a7iv.jpg",
+    "addedAt": "2026-09-10T09:00:00"
+  },
+  {
+    "id": "eq-002",
+    "inventoryCode": "MIC-001",
+    "name": "Rode Wireless GO II",
+    "type": "Mikrofon",
+    "description": "Dvokanalni bežični mikrofonski sistem sa dva predajnika i jednim prijemnikom, USB-C i 3.5mm izlaz.",
+    "hourlyRate": 200,
+    "currency": "RSD",
+    "status": "AVAILABLE",
+    "photoUrl": "assets/images/equipment/rode-wireless-go-2.jpg",
+    "addedAt": "2026-09-12T10:30:00"
+  },
+  {
+    "id": "eq-003",
+    "inventoryCode": "LAP-007",
+    "name": "Dell XPS 15 9530",
+    "type": "Laptop",
+    "description": "Intel Core i7, 32GB RAM, 1TB NVMe SSD, RTX 4060. Namenjen za prezentacije, 3D modelovanje i laboratorijske vežbe.",
+    "hourlyRate": 500,
+    "currency": "RSD",
+    "status": "MAINTENANCE",
+    "photoUrl": "assets/images/equipment/dell-xps-15.jpg",
+    "addedAt": "2026-09-15T11:00:00"
+  },
+  {
+    "id": "eq-004",
+    "inventoryCode": "LAP-012",
+    "name": "Lenovo ThinkPad T14 Gen 4",
+    "type": "Laptop",
+    "description": "Poslovni laptop za nastavu i terenski rad, 16GB RAM, 512GB SSD, Linux/Windows dual-boot.",
+    "hourlyRate": 350,
+    "currency": "RSD",
+    "status": "AVAILABLE",
+    "photoUrl": "assets/images/equipment/thinkpad-t14.jpg",
+    "addedAt": "2026-09-20T08:45:00"
+  },
+  {
+    "id": "eq-005",
+    "inventoryCode": "CAM-004",
+    "name": "Canon EOS R6 Mark II",
+    "type": "Kamera",
+    "description": "Profesionalni fotoaparat sa stabilizacijom u telu i RF 24-105mm objektivom.",
+    "hourlyRate": 480,
+    "currency": "RSD",
+    "status": "AVAILABLE",
+    "photoUrl": "assets/images/equipment/canon-r6-mk2.jpg",
+    "addedAt": "2026-10-01T12:00:00"
+  },
+  {
+    "id": "eq-006",
+    "inventoryCode": "AUD-002",
+    "name": "Zoom H6 Audio Recorder",
+    "type": "Audio oprema",
+    "description": "Šestokanalni prenosivi audio snimač sa X/Y kapsulom i 4 XLR/TRS ulaza.",
+    "hourlyRate": 250,
+    "currency": "RSD",
+    "status": "RENTED",
+    "photoUrl": "assets/images/equipment/zoom-h6.jpg",
+    "addedAt": "2026-10-05T14:15:00"
+  },
+  {
+    "id": "eq-007",
+    "inventoryCode": "PRJ-003",
+    "name": "Epson EB-FH52 Projektor",
+    "type": "Projektor",
+    "description": "Full HD 4000 lumena prenosivi projektor sa HDMI i bežičnim povezivanjem.",
+    "hourlyRate": 300,
+    "currency": "RSD",
+    "status": "DISABLED",
+    "photoUrl": "assets/images/equipment/epson-eb-fh52.jpg",
+    "addedAt": "2026-10-10T09:20:00"
+  },
+  {
+    "id": "eq-008",
+    "inventoryCode": "ACC-009",
+    "name": "Manfrotto 290 Xtra Stativ",
+    "type": "Dodatna oprema",
+    "description": "Aluminijumski tronožac sa fluidnom video glavom za kamere do 5kg.",
+    "hourlyRate": 150,
+    "currency": "RSD",
+    "status": "AVAILABLE",
+    "photoUrl": "assets/images/equipment/manfrotto-290.jpg",
+    "addedAt": "2026-10-18T13:00:00"
+  }
+]

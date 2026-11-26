@@ -1,0 +1,40 @@
+<div class="page-header">
+  <div>
+    <h2 class="page-title">Katalog opreme u sistemu</h2>
+    <p class="page-subtitle">
+      Dodavanje novih uređaja, izmena podataka i kontrola statusa ispravnosti
+    </p>
+  </div>
+  <a routerLink="/equipment/new" class="btn btn-primary">+ DODAJ NOVU OPREMU</a>
+</div>
+
+<table class="data-table">
+  <thead>
+    <tr>
+      <th>Šifra</th>
+      <th>Naziv opreme</th>
+      <th>Tip</th>
+      <th>Cena / sat</th>
+      <th>Status</th>
+      <th>Upravljanje</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (item of equipmentList; track item.id) {
+      <tr>
+        <td class="cell-muted">{{ item.inventoryCode }}</td>
+        <td class="cell-bold">{{ item.name }}</td>
+        <td>{{ item.type }}</td>
+        <td>{{ item.hourlyRate }} {{ item.currency }}</td>
+        <td [class]="getStatusClass(item.status)">
+          {{ getStatusLabel(item.status) }}
+        </td>
+        <td>
+          <a [routerLink]="['/equipment', item.id, 'edit']" class="table-link">
+            Izmeni / Status
+          </a>
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>

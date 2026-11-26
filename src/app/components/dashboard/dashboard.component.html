@@ -1,0 +1,52 @@
+<div class="page-header">
+  <div>
+    <h2 class="page-title">Upravljanje opremom i rezervacijama</h2>
+  </div>
+  <a routerLink="/equipment/new" class="btn btn-primary-normal">+ Dodaj novu opremu</a>
+</div>
+
+<section class="kpi-strip" aria-label="Pregled ključnih pokazatelja">
+  <div class="kpi-cell">
+    <div class="kpi-value kpi-navy">{{ totalEquipmentCount }}</div>
+    <div class="kpi-label">Ukupno opreme</div>
+  </div>
+  <div class="kpi-cell">
+    <div class="kpi-value kpi-navy">{{ activeRentalsCount }}</div>
+    <div class="kpi-label">Aktivno iznajmljeno</div>
+  </div>
+  <div class="kpi-cell">
+    <div class="kpi-value kpi-amber">{{ maintenanceCount }}</div>
+    <div class="kpi-label">Na održavanju</div>
+  </div>
+  <div class="kpi-cell">
+    <div class="kpi-value kpi-red">{{ reportedIssuesCount }}</div>
+    <div class="kpi-label">Prijavljeni problemi</div>
+  </div>
+</section>
+
+<table class="data-table">
+  <thead>
+    <tr>
+      <th>Oprema</th>
+      <th>Korisnik</th>
+      <th>Vreme</th>
+      <th>Obračun</th>
+      <th>Status</th>
+      <th>Akcija</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (row of recentRows; track row.equipmentLabel + row.statusLabel) {
+      <tr>
+        <td class="cell-bold">{{ row.equipmentLabel }}</td>
+        <td>{{ row.userName }}</td>
+        <td>{{ row.timeText }}</td>
+        <td>{{ row.priceText }}</td>
+        <td [class]="row.statusClass">{{ row.statusLabel }}</td>
+        <td>
+          <a [routerLink]="row.actionRoute" class="table-link">{{ row.actionLabel }}</a>
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>

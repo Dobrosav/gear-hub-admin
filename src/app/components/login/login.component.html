@@ -1,0 +1,64 @@
+<div class="login-page">
+  <header class="etf-topbar">
+    <div>
+      <h1 class="etf-topbar-title">UNIVERZITET U BEOGRADU • ELEKTROTEHNIČKI FAKULTET</h1>
+      <p class="etf-topbar-subtitle">
+        Sistem za iznajmljivanje tehničke opreme — Administratorski panel
+      </p>
+    </div>
+    <div class="etf-topbar-right">Prijava</div>
+  </header>
+
+  <main class="login-main">
+    <section class="login-card" aria-labelledby="login-heading">
+      <h2 id="login-heading" class="login-title">Prijavljivanje na administratorski panel</h2>
+
+      @if (hasError) {
+        <div class="alert-error" role="alert">
+          {{ errorMessage }}
+        </div>
+      } @else {
+        <p class="login-subtitle">
+          Pristup veb aplikaciji ograničen je isključivo na ovlašćene administratore.
+        </p>
+      }
+
+      <form class="login-form" (ngSubmit)="onLogin()">
+        <div class="login-form-row">
+          <label class="form-label" for="login-username">Korisničko ime</label>
+          <input
+            id="login-username"
+            name="username"
+            type="text"
+            class="form-control"
+            [class.input-error]="hasError"
+            [(ngModel)]="username"
+            placeholder="admin"
+            autocomplete="username"
+          />
+        </div>
+
+        <div class="login-form-row">
+          <label class="form-label" for="login-password">Lozinka</label>
+          <input
+            id="login-password"
+            name="password"
+            type="password"
+            class="form-control"
+            [class.input-error]="hasError"
+            [(ngModel)]="password"
+            placeholder="••••••••••••"
+            autocomplete="current-password"
+          />
+        </div>
+
+        <div class="login-actions">
+          <button type="submit" class="btn btn-primary">
+           Prijavi se
+          </button>
+
+        </div>
+      </form>
+    </section>
+  </main>
+</div>
