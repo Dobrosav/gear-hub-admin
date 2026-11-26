@@ -1,0 +1,17 @@
+.name-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.alert-info-green {
+  margin-top: 0;
+  margin-bottom: 20px;
+  max-width: 960px;
+}
+
+@media (max-width: 600px) {
+  .name-pair {
+    grid-template-columns: 1fr;
+  }
+}

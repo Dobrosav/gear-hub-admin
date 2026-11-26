@@ -1,0 +1,93 @@
+<div class="page-header">
+  <div>
+    <h2 class="page-title">Izmena ličnih podataka i lozinke</h2>
+  </div>
+</div>
+
+@if (errorMessage) {
+  <div class="alert-error" role="alert">{{ errorMessage }}</div>
+}
+
+@if (successMessage) {
+  <div class="alert-info-green" role="status">{{ successMessage }}</div>
+}
+
+<form class="form-stack" (ngSubmit)="onSaveProfile()">
+  <div class="form-row">
+    <label class="form-label" for="profile-first-name">Ime i prezime</label>
+    <div class="name-pair">
+      <input
+        id="profile-first-name"
+        name="firstName"
+        type="text"
+        class="form-control"
+        [(ngModel)]="firstName"
+        placeholder="Ime"
+      />
+      <input
+        id="profile-last-name"
+        name="lastName"
+        type="text"
+        class="form-control"
+        [(ngModel)]="lastName"
+        placeholder="Prezime"
+        aria-label="Prezime"
+      />
+    </div>
+  </div>
+
+  <div class="form-row">
+    <label class="form-label" for="profile-phone">Kontakt telefon</label>
+    <input
+      id="profile-phone"
+      name="phone"
+      type="text"
+      class="form-control"
+      [(ngModel)]="phone"
+    />
+  </div>
+
+  <div class="form-row">
+    <label class="form-label" for="profile-email">Email adresa</label>
+    <input
+      id="profile-email"
+      name="email"
+      type="email"
+      class="form-control"
+      [(ngModel)]="email"
+    />
+  </div>
+
+  <div class="form-row">
+    <label class="form-label" for="profile-current-pass">Trenutna lozinka</label>
+    <input
+      id="profile-current-pass"
+      name="currentPassword"
+      type="password"
+      class="form-control"
+      [(ngModel)]="currentPassword"
+      placeholder="••••••••••••"
+      autocomplete="current-password"
+    />
+  </div>
+
+  <div class="form-row">
+    <label class="form-label" for="profile-new-pass">Nova lozinka</label>
+    <input
+      id="profile-new-pass"
+      name="newPassword"
+      type="password"
+      class="form-control"
+      [(ngModel)]="newPassword"
+      placeholder="Unesite novu lozinku (opciono)"
+      autocomplete="new-password"
+    />
+  </div>
+
+  <div class="button-group">
+    <button type="submit" class="btn btn-primary">SAČUVAJ PROMENE</button>
+    <button type="button" class="btn btn-danger-outline" (click)="onLogout()">
+      ODJAVI SE
+    </button>
+  </div>
+</form>
