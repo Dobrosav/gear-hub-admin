@@ -1,59 +1,78 @@
-# GearHubAdmin
+# GearHubAdmin — ETF Equipment Rental Admin Panel
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.3.0.
+Web administration application for managing technical equipment rentals, reservations, return inspections, and issue reports at the School of Electrical Engineering (ETF), University of Belgrade.
 
-## Development server
+Built with **Angular 22** and **TypeScript**, using `localStorage` persistence seeded from local JSON datasets (`src/app/data/*.json`).
 
-To start a local development server, run:
+---
 
+## Features
+
+- **Administrator Authentication** (`/login`): Role-restricted sign-in (`ADMIN` role only) with validation and error feedback, plus session persistence in `localStorage`.
+- **Dashboard** (`/dashboard`): KPI overview (total equipment, active rentals, items in maintenance, open issues) and recent activity table.
+- **Equipment Catalog** (`/equipment`, `/equipment/new`, `/equipment/:id/edit`):
+  - Browse all equipment with thumbnails, inventory codes, hourly rates, and availability status.
+  - Add new equipment with Base64 photo preview and required-field validation.
+  - Edit existing equipment details, photo, and status (`AVAILABLE`, `RENTED`, `MAINTENANCE`, `DISABLED`).
+- **Rentals & Return Inspection** (`/rentals`, `/rentals/:id`):
+  - View all active, reserved, and completed rentals with pricing.
+  - Inspect return photos and either confirm proper condition or send equipment to maintenance.
+- **Occupancy Calendar** (`/calendar`): Weekly equipment reservation matrix with previous/next week navigation and clickable booking slots.
+- **Issue Reports** (`/issues`, `/issues/:id`): Review user-submitted issue descriptions and damage photos, then decide whether to send equipment to maintenance, temporarily disable it, or keep it available.
+- **Admin Profile** (`/profile`): Update personal details and change password with current-password verification.
+
+---
+
+## Default Admin Accounts
+
+Initial accounts are seeded from `src/app/data/users.json`:
+
+| Username | Password | Role |
+| :--- | :--- | :--- |
+| `admin` | `Admin1234!` | `ADMIN` |
+| `admin_jelica` | `Admin123!` | `ADMIN` |
+
+> **Note:** If you previously ran the app with older seed data, run `localStorage.clear()` in the browser DevTools console to re-seed from `src/app/data/*.json`.
+
+---
+
+## Getting Started
+
+### Prerequisites
+- Node.js & npm
+
+### Development Server
 ```bash
-ng serve
+npm install
+npm start
 ```
+Open `http://localhost:4200/` in your browser.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
+### Production Build
 ```bash
-ng generate component component-name
+npm run build
 ```
+Build artifacts are output to `dist/gear-hub-admin/`.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
+### Unit Tests (Vitest)
 ```bash
-ng generate --help
+npm test -- --watch=false
 ```
+Unit tests cover `App`, `DataService` (`src/app/services/data.service.spec.ts`), and `AuthService` (`src/app/services/auth.service.spec.ts`).
 
-## Building
+### End-to-End Flow (Selenium IDE)
+Import `gear-hub-admin.side` into the **Selenium IDE** browser extension while the dev server is running on `http://localhost:4200` to execute the full 45-step admin walkthrough.
 
-To build the project run:
+---
 
-```bash
-ng build
+## Project Structure
+
+```text
+├── assets/images/             # Equipment, issue, and return photos
+├── gear-hub-admin.side        # Selenium IDE end-to-end test suite
+└── src/app/
+    ├── components/            # Standalone Angular UI components
+    ├── data/                  # Initial JSON seed files (equipment, users, rentals, issues)
+    ├── models/                # TypeScript interfaces and status types
+    └── services/              # AuthService and DataService (localStorage persistence)
 ```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
