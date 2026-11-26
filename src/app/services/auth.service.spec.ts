@@ -19,7 +19,7 @@ describe('AuthService', () => {
   });
 
   it('logs in a valid ADMIN user and stores session in localStorage', () => {
-    const user = service.login('  admin  ', 'Admin123!');
+    const user = service.login('  admin  ', 'Admin1234!');
 
     expect(user).not.toBeNull();
     expect(user?.username).toBe('admin');
@@ -51,7 +51,7 @@ describe('AuthService', () => {
 
   it('clears session and navigates to /login on logout', () => {
     const navigateSpy = vi.spyOn(router, 'navigate').mockResolvedValue(true);
-    service.login('admin', 'Admin123!');
+    service.login('admin', 'Admin1234!');
 
     service.logout();
 

@@ -1,0 +1,45 @@
+.week-nav {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.calendar-table td {
+  vertical-align: top;
+}
+
+.cell-free {
+  background-color: #f0fdf4;
+  color: var(--status-available);
+  font-weight: 600;
+}
+
+.cell-booked {
+  background-color: #f8fafc;
+}
+
+.cell-maintenance {
+  background-color: #fffbeb;
+  color: var(--status-maintenance);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.slot-link-btn {
+  display: block;
+  width: 100%;
+  padding: 2px 0;
+  border: none;
+  background: transparent;
+  text-align: left;
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--etf-navy);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.slot-link-btn:hover {
+  color: var(--etf-navy-hover);
+}

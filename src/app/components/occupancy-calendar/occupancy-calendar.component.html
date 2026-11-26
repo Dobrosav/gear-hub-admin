@@ -1,0 +1,53 @@
+<div class="page-header">
+  <div>
+    <h2 class="page-title">Kalendar svih rezervacija</h2>
+    <p class="page-subtitle">
+      Pregled zauzetosti po uređajima za radnu nedelju (klik na rezervaciju otvara detalje)
+    </p>
+  </div>
+  <div class="week-nav">
+    <button type="button" class="btn btn-outline" (click)="onPreviousWeek()">
+      ← Prethodna nedelja
+    </button>
+    <button type="button" class="btn btn-outline" (click)="onNextWeek()">
+      Sledeća nedelja →
+    </button>
+  </div>
+</div>
+
+<table class="data-table calendar-table">
+  <thead>
+    <tr>
+      <th>Oprema</th>
+      @for (day of weekDays; track day.dateStr) {
+        <th>{{ day.label }}</th>
+      }
+    </tr>
+  </thead>
+  <tbody>
+    @for (row of calendarRows; track row.equipmentId) {
+      <tr>
+        <td class="cell-bold">{{ row.equipmentName }}</td>
+        @for (cell of row.cells; track $index) {
+          @if (cell.kind === 'free') {
+            <td class="cell-free">Slobodno</td>
+          } @else if (cell.kind === 'maintenance') {
+            <td class="cell-maintenance">{{ cell.statusText }}</td>
+          } @else {
+            <td class="cell-booked">
+              @for (slot of cell.slots; track slot.rentalId) {
+                <button
+                  type="button"
+                  class="slot-link-btn"
+                  (click)="onReservationClick(slot.rentalId)"
+                >
+                  {{ slot.label }}
+                </button>
+              }
+            </td>
+          }
+        }
+      </tr>
+    }
+  </tbody>
+</table>

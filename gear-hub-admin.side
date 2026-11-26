@@ -1,0 +1,390 @@
+{
+  "id": "b7c2d9a0-3a41-4d7c-9c5e-1f4e8b2d0001",
+  "version": "2.0",
+  "name": "gear-hub-admin",
+  "url": "http://localhost:4200",
+  "tests": [
+    {
+      "id": "e1a0c001-1111-4000-8000-000000000001",
+      "name": "Admin Full Flow (Login -> Dashboard -> Equipment -> Rentals -> Calendar -> Issues -> Profile -> Logout)",
+      "commands": [
+        {
+          "id": "cmd-001",
+          "comment": "Otvaranje login stranice",
+          "command": "open",
+          "target": "/login",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "cmd-002",
+          "comment": "Podešavanje veličine prozora",
+          "command": "setWindowSize",
+          "target": "1440x900",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "cmd-003",
+          "comment": "Test prazne forme za prijavu (očekuje se greška)",
+          "command": "click",
+          "target": "css=button[type=\"submit\"]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "cmd-004",
+          "comment": "Provera banera greške na loginu",
+          "command": "waitForElementVisible",
+          "target": "css=.alert-error",
+          "targets": [],
+          "value": "5000"
+        },
+        {
+          "id": "cmd-005",
+          "comment": "Unos ispravnog admin korisničkog imena (zaobilazi Firefox initKeyEvent bag u Selenium IDE)",
+          "command": "executeScript",
+          "target": "const el = document.getElementById('login-username'); el.value = 'admin'; el.dispatchEvent(new Event('input', { bubbles: true })); el.dispatchEvent(new Event('change', { bubbles: true }));",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "cmd-006",
+          "comment": "Unos ispravne admin lozinke",
+          "command": "executeScript",
+          "target": "const el = document.getElementById('login-password'); el.value = 'Admin1234!'; el.dispatchEvent(new Event('input', { bubbles: true })); el.dispatchEvent(new Event('change', { bubbles: true }));",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "cmd-007",
+          "comment": "Klik na Prijavi se",
+          "command": "click",
+          "target": "css=button[type=\"submit\"]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "cmd-008",
+          "comment": "Čekanje komandne table",
+          "command": "waitForElementVisible",
+          "target": "xpath=//h2[contains(text(),'Upravljanje opremom i rezervacijama')]",
+          "targets": [],
+          "value": "5000"
+        },
+        {
+          "id": "cmd-009",
+          "comment": "Odlazak na dodavanje nove opreme sa komandne table",
+          "command": "click",
+          "target": "css=a[href=\"/equipment/new\"]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "cmd-010",
+          "comment": "Čekanje forme za novu opremu",
+          "command": "waitForElementVisible",
+          "target": "id=eq-name",
+          "targets": [],
+          "value": "5000"
+        },
+        {
+          "id": "cmd-011",
+          "comment": "Test validacije prazne forme pri dodavanju opreme",
+          "command": "click",
+          "target": "css=button[type=\"submit\"]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "cmd-012",
+          "comment": "Provera banera greške na dodavanju opreme",
+          "command": "waitForElementVisible",
+          "target": "css=.alert-error",
+          "targets": [],
+          "value": "5000"
+        },
+        {
+          "id": "cmd-013",
+          "comment": "Povratak na katalog preko dugmeta Otkaži",
+          "command": "click",
+          "target": "xpath=//button[contains(text(),'Otkaži')]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "cmd-014",
+          "comment": "Čekanje kataloga opreme",
+          "command": "waitForElementVisible",
+          "target": "xpath=//h2[contains(text(),'Katalog opreme u sistemu')]",
+          "targets": [],
+          "value": "5000"
+        },
+        {
+          "id": "cmd-015",
+          "comment": "Otvaranje izmene prve stavke opreme",
+          "command": "click",
+          "target": "css=table.data-table tbody tr:first-child a.table-link",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "cmd-016",
+          "comment": "Čekanje forme za izmenu opreme",
+          "command": "waitForElementVisible",
+          "target": "id=edit-rate",
+          "targets": [],
+          "value": "5000"
+        },
+        {
+          "id": "cmd-017",
+          "comment": "Izmena cene po satu",
+          "command": "executeScript",
+          "target": "const el = document.getElementById('edit-rate'); el.value = '475'; el.dispatchEvent(new Event('input', { bubbles: true })); el.dispatchEvent(new Event('change', { bubbles: true }));",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "cmd-018",
+          "comment": "Čuvanje izmena opreme",
+          "command": "click",
+          "target": "css=button[type=\"submit\"]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "cmd-019",
+          "comment": "Provera povratka u katalog opreme",
+          "command": "waitForElementVisible",
+          "target": "xpath=//h2[contains(text(),'Katalog opreme u sistemu')]",
+          "targets": [],
+          "value": "5000"
+        },
+        {
+          "id": "cmd-020",
+          "comment": "Odlazak na Sva iznajmljivanja preko sidebar-a",
+          "command": "click",
+          "target": "css=aside a[href=\"/rentals\"]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "cmd-021",
+          "comment": "Čekanje liste iznajmljivanja",
+          "command": "waitForElementVisible",
+          "target": "xpath=//h2[contains(text(),'Sva iznajmljivanja u sistemu')]",
+          "targets": [],
+          "value": "5000"
+        },
+        {
+          "id": "cmd-022",
+          "comment": "Otvaranje detalja iznajmljivanja sa fotografijom",
+          "command": "click",
+          "target": "xpath=(//a[contains(text(),'Pregledaj sliku')])[1]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "cmd-023",
+          "comment": "Čekanje okvira sa priloženom fotografijom",
+          "command": "waitForElementVisible",
+          "target": "css=.attachment-box",
+          "targets": [],
+          "value": "5000"
+        },
+        {
+          "id": "cmd-024",
+          "comment": "Potvrda urednog stanja opreme",
+          "command": "click",
+          "target": "xpath=//button[contains(text(),'POTVRDI UREDNO STANJE')]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "cmd-025",
+          "comment": "Čekanje povratka na Sva iznajmljivanja",
+          "command": "waitForElementVisible",
+          "target": "xpath=//h2[contains(text(),'Sva iznajmljivanja u sistemu')]",
+          "targets": [],
+          "value": "5000"
+        },
+        {
+          "id": "cmd-026",
+          "comment": "Otvaranje kalendara zauzetosti",
+          "command": "click",
+          "target": "css=a[href=\"/calendar\"]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "cmd-027",
+          "comment": "Čekanje kalendara svih rezervacija",
+          "command": "waitForElementVisible",
+          "target": "xpath=//h2[contains(text(),'Kalendar svih rezervacija')]",
+          "targets": [],
+          "value": "5000"
+        },
+        {
+          "id": "cmd-028",
+          "comment": "Pomeranje na sledeću nedelju",
+          "command": "click",
+          "target": "xpath=//button[contains(text(),'Sledeća nedelja')]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "cmd-029",
+          "comment": "Povratak na prethodnu nedelju",
+          "command": "click",
+          "target": "xpath=//button[contains(text(),'Prethodna nedelja')]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "cmd-030",
+          "comment": "Klik na prvu rezervaciju u kalendaru",
+          "command": "click",
+          "target": "css=.slot-link-btn",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "cmd-031",
+          "comment": "Provera otvaranja detalja iznajmljivanja iz kalendara",
+          "command": "waitForElementVisible",
+          "target": "css=.attachment-box",
+          "targets": [],
+          "value": "5000"
+        },
+        {
+          "id": "cmd-032",
+          "comment": "Odlazak na Prijavljeni problemi preko sidebar-a",
+          "command": "click",
+          "target": "css=aside a[href=\"/issues\"]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "cmd-033",
+          "comment": "Čekanje tabele prijavljenih problema",
+          "command": "waitForElementVisible",
+          "target": "xpath=//h2[contains(text(),'Prijavljeni problemi i kvarovi')]",
+          "targets": [],
+          "value": "5000"
+        },
+        {
+          "id": "cmd-034",
+          "comment": "Otvaranje obrade prve otvorene prijave",
+          "command": "click",
+          "target": "xpath=(//a[contains(text(),'Obradi prijavu')])[1]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "cmd-035",
+          "comment": "Čekanje grupe radio dugmadi za odluku",
+          "command": "waitForElementVisible",
+          "target": "css=.radio-group-box",
+          "targets": [],
+          "value": "5000"
+        },
+        {
+          "id": "cmd-036",
+          "comment": "Izbor opcije Privremeno isključi iz sistema",
+          "command": "click",
+          "target": "xpath=//span[contains(text(),'Privremeno isključi iz sistema')]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "cmd-037",
+          "comment": "Potvrda odluke i ažuriranje statusa",
+          "command": "click",
+          "target": "xpath=//button[contains(text(),'POTVRDI ODLUKU I AŽURIRAJ STATUS')]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "cmd-038",
+          "comment": "Čekanje povratka na listu prijava",
+          "command": "waitForElementVisible",
+          "target": "xpath=//h2[contains(text(),'Prijavljeni problemi i kvarovi')]",
+          "targets": [],
+          "value": "5000"
+        },
+        {
+          "id": "cmd-039",
+          "comment": "Otvaranje Moj profil stranice preko sidebar-a",
+          "command": "click",
+          "target": "css=aside a[href=\"/profile\"]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "cmd-040",
+          "comment": "Čekanje forme profila",
+          "command": "waitForElementVisible",
+          "target": "id=profile-phone",
+          "targets": [],
+          "value": "5000"
+        },
+        {
+          "id": "cmd-041",
+          "comment": "Izmena kontakt telefona",
+          "command": "executeScript",
+          "target": "const el = document.getElementById('profile-phone'); el.value = '+381 11 3218 400'; el.dispatchEvent(new Event('input', { bubbles: true })); el.dispatchEvent(new Event('change', { bubbles: true }));",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "cmd-042",
+          "comment": "Čuvanje izmena profila",
+          "command": "click",
+          "target": "css=button[type=\"submit\"]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "cmd-043",
+          "comment": "Provera zelene poruke uspeha",
+          "command": "waitForElementVisible",
+          "target": "css=.alert-info-green",
+          "targets": [],
+          "value": "5000"
+        },
+        {
+          "id": "cmd-044",
+          "comment": "Odjava sa sistema preko sidebar-a",
+          "command": "click",
+          "target": "css=button.sidebar-logout-btn",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "cmd-045",
+          "comment": "Provera povratka na login ekran",
+          "command": "waitForElementVisible",
+          "target": "id=login-username",
+          "targets": [],
+          "value": "5000"
+        }
+      ]
+    }
+  ],
+  "suites": [
+    {
+      "id": "s1000000-0000-4000-8000-000000000001",
+      "name": "Default Suite",
+      "persistSession": false,
+      "parallel": false,
+      "timeout": 300,
+      "tests": [
+        "e1a0c001-1111-4000-8000-000000000001"
+      ]
+    }
+  ],
+  "urls": [
+    "http://localhost:4200"
+  ],
+  "plugins": []
+}

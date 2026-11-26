@@ -1,0 +1,116 @@
+<div class="page-header">
+  <div>
+    <h2 class="page-title">
+      @if (notFound) {
+        Oprema nije pronađena
+      } @else {
+        Izmena opreme: {{ name }} ({{ inventoryCode }})
+      }
+    </h2>
+  </div>
+  <a routerLink="/equipment" class="back-link">← Nazad na katalog</a>
+</div>
+
+@if (notFound) {
+  <div class="alert-error">
+    Tražena stavka opreme nije pronađena u sistemu.
+  </div>
+} @else {
+  @if (hasError) {
+    <div class="alert-error" role="alert">{{ errorMessage }}</div>
+  }
+
+  <form class="form-stack" (ngSubmit)="onSaveChanges()">
+    <div class="form-row">
+      <label class="form-label" for="edit-name">Naziv opreme</label>
+      <input
+        id="edit-name"
+        name="name"
+        type="text"
+        class="form-control"
+        [class.input-error]="hasError && !name.trim()"
+        [(ngModel)]="name"
+      />
+    </div>
+
+    <div class="form-row">
+      <label class="form-label" for="edit-type">Tip opreme</label>
+      <select id="edit-type" name="type" class="form-control" [(ngModel)]="type">
+        @for (t of equipmentTypes; track t) {
+          <option [value]="t">{{ t }}</option>
+        }
+      </select>
+    </div>
+
+    <div class="form-row">
+      <label class="form-label" for="edit-rate">Cena po satu (RSD)</label>
+      <input
+        id="edit-rate"
+        name="hourlyRate"
+        type="number"
+        class="form-control"
+        [class.input-error]="hasError && (hourlyRate === null || hourlyRate <= 0)"
+        [(ngModel)]="hourlyRate"
+      />
+    </div>
+
+    <div class="form-row">
+      <label class="form-label" for="edit-status">Status dostupnosti i ispravnosti</label>
+      <select id="edit-status" name="status" class="form-control" [(ngModel)]="status">
+        <option value="AVAILABLE">Dostupno</option>
+        <option value="MAINTENANCE">Na održavanju</option>
+        <option value="DISABLED">Privremeno isključeno</option>
+        <option value="RENTED">Iznajmljeno</option>
+      </select>
+    </div>
+
+    <div class="form-row">
+      <label class="form-label" for="edit-desc">Opis</label>
+      <input
+        id="edit-desc"
+        name="description"
+        type="text"
+        class="form-control"
+        [(ngModel)]="description"
+      />
+    </div>
+
+    <div class="form-row">
+      <span class="form-label">Fotografija</span>
+      <div>
+        <label class="form-control file-picker-box" for="edit-photo">
+          <input
+            id="edit-photo"
+            type="file"
+            accept="image/*"
+            class="file-input-hidden"
+            (change)="onFileSelected($event)"
+          />
+          @if (selectedFileName) {
+            <span>✓ Nova izabrana datoteka: {{ selectedFileName }}</span>
+          } @else {
+            <span class="file-placeholder">Kliknite ako želite da zamenite fotografiju...</span>
+          }
+        </label>
+
+        @if (photoPreviewSrc) {
+          <img
+            [src]="photoPreviewSrc"
+            [alt]="name"
+            class="equipment-form-preview"
+          />
+        }
+      </div>
+    </div>
+
+    <div class="alert-info-green">
+      Napomena: Promena statusa u „Na održavanju“ ili „Privremeno isključeno“ odmah uklanja
+      mogućnost rezervacije u mobilnoj aplikaciji.
+    </div>
+
+    <div class="button-group">
+      <button type="submit" class="btn btn-primary">SAČUVAJ IZMENE</button>
+      <button type="button" class="btn btn-outline" (click)="onCancel()">Otkaži</button>
+    </div>
+  </form>
+}

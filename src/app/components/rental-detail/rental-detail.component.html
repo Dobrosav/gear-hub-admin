@@ -1,0 +1,74 @@
+<div class="page-header">
+  <div>
+    <h2 class="page-title">
+      @if (rental) {
+        Iznajmljivanje #{{ rental.id.toUpperCase() }} — {{ equipmentName }}
+      } @else {
+        Iznajmljivanje nije pronađeno
+      }
+    </h2>
+  </div>
+  <a routerLink="/rentals" class="back-link">← Nazad na sva iznajmljivanja</a>
+</div>
+
+@if (!rental) {
+  <div class="alert-error">Traženo iznajmljivanje ne postoji u sistemu.</div>
+} @else {
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Korisnik</th>
+        <th>Kontakt</th>
+        <th>Početak — Završetak</th>
+        <th>Trajanje</th>
+        <th>Konačan obračun</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="cell-bold">{{ userFullName }}</td>
+        <td>
+          <div>{{ userPhone }}</div>
+          <div class="cell-muted">{{ userEmail }}</div>
+        </td>
+        <td>{{ periodText }}</td>
+        <td>{{ durationText }}</td>
+        <td class="cell-bold">{{ finalPriceText }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <section class="attachment-box" aria-label="Priložena fotografija pri vraćanju opreme">
+    <p class="attachment-title">[ PRILOŽENA FOTOGRAFIJA PRI VRAĆANJU OPREME ]</p>
+    <p class="attachment-meta">
+      Datoteka: <strong>{{ photoFileName }}</strong> • Otpremljeno: {{ uploadedAtText }}
+    </p>
+    <p class="attachment-desc">
+      Vizuelni prikaz opreme i pratećih dodataka nakon završenog iznajmljivanja.
+    </p>
+    @if (returnPhotoSrc) {
+      <img
+        [src]="returnPhotoSrc"
+        [alt]="'Vraćena oprema: ' + equipmentName"
+        class="attachment-preview-img"
+      />
+    }
+  </section>
+
+  <div class="button-group">
+    <button
+      type="button"
+      class="btn btn-primary"
+      (click)="onConfirmProperCondition()"
+    >
+      POTVRDI UREDNO STANJE
+    </button>
+    <button
+      type="button"
+      class="btn btn-danger-outline"
+      (click)="onSendToMaintenance()"
+    >
+      POŠALJI OPREMU NA ODRŽAVANJE
+    </button>
+  </div>
+}
